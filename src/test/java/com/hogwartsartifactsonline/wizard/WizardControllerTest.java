@@ -244,7 +244,7 @@ class WizardControllerTest {
     }
 
 
- /*@Test
+ @Test
     void testAssignArtifactSuccess() throws Exception {
         // Given
         doNothing().when(this.wizardService).assignArtifact(2, "1250808601744904191");
@@ -257,7 +257,7 @@ class WizardControllerTest {
                 .andExpect(jsonPath("$.data").isEmpty());
     }
 
-    @Test
+   @Test
     void testAssignArtifactErrorWithNonExistentWizardId() throws Exception {
         // Given
         doThrow(new ObjectNotFoundException("wizard", 5)).when(this.wizardService).assignArtifact(5, "1250808601744904191");
@@ -273,7 +273,8 @@ class WizardControllerTest {
     @Test
     void testAssignArtifactErrorWithNonExistentArtifactId() throws Exception {
         // Given
-        doThrow(new ObjectNotFoundException("artifact\", \"1250808601744904199\")).when(this.wizardService).assignArtifact(2, "1250808601744904199");
+        doThrow(new ObjectNotFoundException("artifact", "1250808601744904199"))
+                .when(this.wizardService).assignArtifact(2, "1250808601744904199");
 
         // When and then
         this.mockMvc.perform(put(this.baseUrl + "/wizards/2/artifacts/1250808601744904199").accept(MediaType.APPLICATION_JSON))
@@ -283,6 +284,6 @@ class WizardControllerTest {
                 .andExpect(jsonPath("$.data").isEmpty());
     }
 
-*/
+
 }
 
