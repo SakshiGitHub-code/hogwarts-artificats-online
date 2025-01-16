@@ -4,13 +4,14 @@ import com.hogwartsartifactsonline.wizard.Wizard;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.Version;
 import java.io.Serializable;
 
 @Entity
 public class Artifact implements Serializable {
     @Id
     private String id;
+
     private String name;
     private String description;
     private String imageUrl;
@@ -20,6 +21,7 @@ public class Artifact implements Serializable {
 
   public Artifact(){
   }
+
 
     public String getId() {
         return id;
