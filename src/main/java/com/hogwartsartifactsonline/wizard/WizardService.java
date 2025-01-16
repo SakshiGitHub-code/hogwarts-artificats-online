@@ -1,6 +1,7 @@
 
 package com.hogwartsartifactsonline.wizard;
 
+import com.hogwartsartifactsonline.artifact.Artifact;
 import com.hogwartsartifactsonline.artifact.ArtifactRepository;
 import com.hogwartsartifactsonline.system.exception.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
@@ -55,14 +56,14 @@ public class WizardService {
         this.wizardRepository.deleteById(wizardId);
     }
 
-   /* public void assignArtifact(Integer wizardId, String artifactId){
+   public void assignArtifact(Integer wizardId, String artifactId){
         // Find this artifact by Id from DB.
         Artifact artifactToBeAssigned = this.artifactRepository.findById(artifactId)
-                .orElseThrow(() -> new ArtifactNotFoundException( artifactId));
+                .orElseThrow(() -> new ObjectNotFoundException("Artifact", artifactId));
 
         // Find this wizard by Id from DB.
         Wizard wizard = this.wizardRepository.findById(wizardId)
-                .orElseThrow(() -> new WizardNotFoundException( wizardId));
+                .orElseThrow(() -> new ObjectNotFoundException("Wizard", wizardId));
 
         // Artifact assignment
         // We need to see if the artifact is already owned by some wizard.
@@ -71,5 +72,5 @@ public class WizardService {
         }
         wizard.addArtifact(artifactToBeAssigned);
     }
-*/
+
 }

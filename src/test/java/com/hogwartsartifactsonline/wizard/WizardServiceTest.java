@@ -29,8 +29,8 @@ class WizardServiceTest {
 @Mock
 WizardRepository wizardRepository;
 
-  /*  @Mock
-    ArtifactRepository artifactRepository;*/
+    @Mock
+    ArtifactRepository artifactRepository;
 
     @InjectMocks
 WizardService wizardService;
@@ -198,23 +198,9 @@ WizardService wizardService;
         // Then
         verify(this.wizardRepository, times(1)).findById(1);
     }
-/*
 
-   @Test
-    void testAssignArtifactErrorWithNonExistentArtifactId() {
-        // Given
-        given(this.artifactRepository.findById("1250808601744904192")).willReturn(Optional.empty());
 
-        // When
-        Throwable thrown = assertThrows(ObjectNotFoundException.class, () -> {
-            this.wizardService.assignArtifact(3, "1250808601744904192");
-        });
 
-        // Then
-        assertThat(thrown)
-                .isInstanceOf(ObjectNotFoundException.class)
-                .hasMessage("Could not find artifact with Id 1250808601744904192 :(");
-    }
 
   @Test
     void testAssignArtifactSuccess() {
@@ -270,8 +256,22 @@ WizardService wizardService;
         // Then
         assertThat(thrown)
                 .isInstanceOf(ObjectNotFoundException.class)
-                .hasMessage("Could not find wizard with Id 3 :(");
+                .hasMessage("Could not find Wizard with Id 3 :(");
         assertThat(a.getOwner().getId()).isEqualTo(2);
     }
-*/
+   @Test
+    void testAssignArtifactErrorWithNonExistentArtifactId() {
+        // Given
+        given(this.artifactRepository.findById("1250808601744904192")).willReturn(Optional.empty());
+
+        // When
+        Throwable thrown = assertThrows(ObjectNotFoundException.class, () -> {
+            this.wizardService.assignArtifact(3, "1250808601744904192");
+        });
+
+        // Then
+        assertThat(thrown)
+                .isInstanceOf(ObjectNotFoundException.class)
+                .hasMessage("Could not find Artifact with Id 1250808601744904192 :(");
+    }
 }
