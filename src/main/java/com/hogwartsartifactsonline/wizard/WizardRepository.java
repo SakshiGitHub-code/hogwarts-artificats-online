@@ -1,3 +1,4 @@
+
 package com.hogwartsartifactsonline.wizard;
 
 import org.springframework.data.jpa.repository.JpaRepository;
