@@ -17,22 +17,17 @@ public class DBDataInitializer implements CommandLineRunner {
 
     private final WizardRepository wizardRepository;
 
- /*  private final UserService userService;*/
-
-    private final UserRepository userRepository;
+   private final UserService userService;
 
 
-  /*  public DBDataInitializer(ArtifactRepository artifactRepository, WizardRepository wizardRepository, UserService userService) {
+
+    public DBDataInitializer(ArtifactRepository artifactRepository, WizardRepository wizardRepository, UserService userService) {
         this.artifactRepository = artifactRepository;
         this.wizardRepository = wizardRepository;
         this.userService = userService;
-    }*/
-
-    public DBDataInitializer(ArtifactRepository artifactRepository, WizardRepository wizardRepository, UserRepository userRepository) {
-        this.artifactRepository = artifactRepository;
-        this.wizardRepository = wizardRepository;
-        this.userRepository = userRepository;
     }
+
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -114,9 +109,9 @@ public class DBDataInitializer implements CommandLineRunner {
         u3.setEnabled(false);
         u3.setRoles("user");
 
-        this.userRepository.save(u1);
-        this.userRepository.save(u2);
-        this.userRepository.save(u3);
+        this.userService.save(u1);
+        this.userService.save(u2);
+        this.userService.save(u3);
 
     }
 }
